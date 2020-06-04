@@ -1,8 +1,11 @@
 #! sudo apt install r-base-core
 
-#rutalib <- "/home/jzamora/storage/Rlibs"
-#dir.create(rutalib, showWarnings = TRUE, recursive = TRUE)
-#.libPaths(rutalib)
+# Select a directory to save library
+home <- path.expand("~")
+rutalib <- paste(home, "Rlibs", sep = "/")
+dir.create(rutalib, showWarnings = TRUE, recursive = TRUE)
+.libPaths(rutalib)
+
 
 install.packages("openssl")
 if (!requireNamespace("devtools", quietly = TRUE))
