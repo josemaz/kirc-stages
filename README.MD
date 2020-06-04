@@ -26,6 +26,14 @@ The expression data for control and each stage are saved on:
 
 `$ ls pipeline/TCGA/Outs/`
 
+Plots for pre Quality Control are saved on:
+
+`$ ls pipeline/TCGA/Plots/QC_PRE/`
+
+Plots for post Quality Control are saved on:
+
+`$ ls pipeline/TCGA/Plots/QC_POST/`
+
 
 # Mutual Information
 
