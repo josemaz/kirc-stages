@@ -1,3 +1,7 @@
+home <- path.expand("~")
+rutalib <- paste(home, "Rlibs", sep = "/")
+.libPaths(rutalib)
+
 library(TCGAbiolinks)
 library(NOISeq)
 library(edgeR)
@@ -8,10 +12,6 @@ library(SummarizedExperiment)
 library(VennDiagram)
 library(EDASeq)
 
-
-home <- path.expand("~")
-rutalib <- paste(home, "Rlibs", sep = "/")
-.libPaths(rutalib)
 
 # sessionInfo() # show library versions
 packageVersion("TCGAbiolinks") # show library versions
