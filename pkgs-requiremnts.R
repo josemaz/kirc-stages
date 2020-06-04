@@ -19,6 +19,7 @@ BiocManager::install("SummarizedExperiment")
 BiocManager::install("GWASTools")
 BiocManager::install("cqn")
 BiocManager::install("Glimma")
+BiocManager::install("DESeq")
 #! BiocManager::install("TCGAbiolinks")
 
 #! Error in curl::curl_fetch_memory(url, handle = handle) :
