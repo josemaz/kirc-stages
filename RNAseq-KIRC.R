@@ -9,6 +9,9 @@ library(VennDiagram)
 library(EDASeq)
 
 
+home <- path.expand("~")
+rutalib <- paste(home, "Rlibs", sep = "/")
+.libPaths(rutalib)
 
 # sessionInfo() # show library versions
 packageVersion("TCGAbiolinks") # show library versions
