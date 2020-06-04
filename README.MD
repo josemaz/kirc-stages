@@ -1,4 +1,4 @@
-# Introduction
+## Introduction
 
 This repository contains code and supplementary materials for paper named "xxx". 
 
@@ -8,11 +8,13 @@ Jose Maria Zamora-Fuentes, Jesus Espinal-Enriquez, Enrique Hernandez-Lemus
 
 Pre-requisites to run scripts in theses paheses are obtained with:
 
-`$ Rscprit pkgs-requiremnts.R`
+MOdify
+
+`$ Rscript pkgs-requiremnts.R`
 
 These three phases of the process are performed by next R script:
 
-`$ Rscprit RNAseq-KIRC.R`
+`$ Rscript RNAseq-KIRC.R`
 
 The expression data for control and each stage are saved on:
 

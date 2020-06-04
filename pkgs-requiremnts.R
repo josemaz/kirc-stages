@@ -1,6 +1,6 @@
 #! sudo apt install r-base-core
 
-rutalib <- "/home/jzamora/storage/Rlibs"
+#rutalib <- "/home/jzamora/storage/Rlibs"
 dir.create(rutalib, showWarnings = TRUE, recursive = TRUE)
 .libPaths(rutalib)
 
