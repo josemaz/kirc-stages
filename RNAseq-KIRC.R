@@ -42,6 +42,7 @@ query <- GDCquery(project = "TCGA-KIRC",
                   data.type = "Gene Expression Quantification",
                   workflow.type = "HTSeq - Counts")
 GDCdownload(query)
+#! gene annotation GRCh38.p13
 data.raw <- GDCprepare(query)
 save(data.raw, file=EXP.NAME%+%"-expr.RDATA", compress="xz")
 load(file=EXP.NAME%+%"-expr.RDATA") 
