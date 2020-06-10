@@ -21,6 +21,7 @@ BiocManager::install("cqn")
 BiocManager::install("Glimma")
 BiocManager::install("DESeq")
 BiocManager::install("EDASeq")
+BiocManager::install("edgeR")
 #! BiocManager::install("TCGAbiolinks")
 
 #! Error in curl::curl_fetch_memory(url, handle = handle) :

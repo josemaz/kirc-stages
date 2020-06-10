@@ -3,6 +3,10 @@ library(edgeR)
 library(dplyr)
 library(Glimma)
 
+home <- path.expand("~")
+rutalib <- paste(home, "Rlibs", sep = "/")
+dir.create(rutalib, showWarnings = TRUE, recursive = TRUE)
+.libPaths(rutalib)
 
 deg.process <- function(dir.express, conds, dir.out ) {
 
