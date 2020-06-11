@@ -15,6 +15,10 @@ Pre-requisites to run scripts in theses paheses are obtained with:
 
 `$ Rscript pkgs-requiremnts.R`
 
+Python Pre-requisites (optional):
+
+`$ bash install-miniconda.sh`
+
 
 ## 01 - Data Adquisition, Control Quality and Normalization
 

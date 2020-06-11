@@ -8,5 +8,6 @@ rm -rf /tmp/Miniconda3-latest-Linux-x86_64.sh
 . $condadir/bin/activate
 conda install -y numpy pandas seaborn igraph
 easy_install trash-cli
+pip install python-igraph
 pip install gprofiler-official
 echo ". $condadir/bin/activate" >> ~/.bashrc
