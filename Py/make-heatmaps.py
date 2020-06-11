@@ -70,7 +70,7 @@ ax0.set_title('Intersections')
 ax1 = sns.heatmap(df2, cmap='coolwarm', annot=True, robust=True, fmt="d", 
 	yticklabels=stages, cbar=False, ax=ax1)
 ax1.xaxis.set_ticks_position('top')
-ax1.set_title('Diferences')
+ax1.set_title('Differences')
 # fig.suptitle('Interections between stages of MI networks for ccRC',fontsize=12)
 plt.subplots_adjust(top=0.85)
 plt.savefig(outdir + "/interacciones-etapas.png",dpi=300)
