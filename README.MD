@@ -63,11 +63,11 @@ Script to generate intersections of stages and control.
 
 Intersections are saved on:
 
-`$ python Py/make-heatmaps.py`
+`$ ls Results/intersections`
 
 To generate heatmaps intersection plots:
 
-`$ ls Results/intersections`
+`$ python Py/make-heatmaps.py`
 
 Plots are saved on:
 
