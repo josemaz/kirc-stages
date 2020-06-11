@@ -55,7 +55,7 @@ Output for each stage is saved on:
 
 This output contains volcano plot in html format.
 
-# 04 - Networks Analysis
+## 04 - Networks Analysis
 
 Script to generate intersections of stages and control.
 
@@ -72,4 +72,21 @@ To generate heatmaps intersection plots:
 Plots are saved on:
 
 `$ ls Plots`
+
+To generate intersection between control and stages:
+
+`$ python Py/make-heatmaps.py`
+
+Output are a network saved on:
+
+`$ ls Results/intersections/inter-ctrl-stages.tsv`
+
+and annotation for every MI interaction in:
+
+`$ ls Results/intersections/source-inter-ctrl-stages.tsv`
+`$ ls Results/intersections/target-inter-ctrl-stages.tsv`
+
+
+
+
 
