@@ -91,5 +91,19 @@ and annotation for every MI interaction in:
 
 `$ ls Results/intersections/target-inter-ctrl-stages.tsv`
 
+### Network Enrichment
+
+To get enrichment by component:
+
+`$ python Py/component-GO.py`
+
+Output gene-idcomponent:
+
+`$ ls Results/intersections/inter-ctrl-stages-components.tsv`
+
+and annotation enrichement by component is saved:
+
+`$ ls Results/intersections/inter-ctrl-stages-enrich.tsv`
+
 
 
