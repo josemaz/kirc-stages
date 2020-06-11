@@ -55,13 +55,21 @@ Output for each stage is saved on:
 
 This output contains volcano plot in html format.
 
-# 04 - Netowrks Analysis
+# 04 - Networks Analysis
 
 Script to generate intersections of stages and control.
 
 `$ python Py/intersections.py`
 
-The intersections are saved on:
+Intersections are saved on:
+
+`$ python Py/make-heatmaps.py`
+
+To generate heatmaps intersection plots:
 
 `$ ls Results/intersections`
+
+Plots are saved on:
+
+`$ ls Plots`
 
