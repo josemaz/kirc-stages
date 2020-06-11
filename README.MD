@@ -57,7 +57,7 @@ This output contains volcano plot in html format.
 
 ## 04 - Networks Analysis
 
-### Interseccions between all cohorts
+### Intersections between all cohorts
 
 Script to generate intersection for each cohort:
 
@@ -75,7 +75,7 @@ Plots are saved on:
 
 `$ ls Plots`
 
-### Interseccions between control and stages
+### Intersections only between control and stages
 
 To generate intersections:
 
@@ -88,6 +88,7 @@ Output are a network saved on:
 and annotation for every MI interaction in:
 
 `$ ls Results/intersections/source-inter-ctrl-stages.tsv`
+
 `$ ls Results/intersections/target-inter-ctrl-stages.tsv`
 
 
