@@ -30,6 +30,8 @@ for gname, g in cuts:
 	t = g.Tissue.unique()[0]
 	# v = g.Valor.unique()[0]
 	c = g.cuts.unique()[0]
+	etapas.sort()
+	print("\n", "SORT:", etapas, "\n")
 	for pair in list(combinations(etapas, 2)):
 		p1 = pair[0]
 		p2 = pair[1]

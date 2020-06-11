@@ -12,18 +12,18 @@ dirnets = "Results/intersections/"
 stages = ["ctrl", "stagei", "stageii", "stageiii", "stageiv"]
 
 
-
-fname = "inter-kirc-stageii-stagei-10k.txt"
+fname = "inter-kirc-stagei-stageii-10k.txt"
 f1 = np.genfromtxt(dirnets + fname, delimiter=' ', dtype='unicode')
 edge1 = set([(x[0], x[1]) for x in f1])
-fname = "inter-kirc-stageiii-stageii-10k.txt"
+
+fname = "inter-kirc-stageii-stageiii-10k.txt"
 f2 = np.genfromtxt(dirnets + fname, delimiter=' ', dtype='unicode')
 edge2 = set([(x[0], x[1]) for x in f2])
 
 edges_intersec = edge1 & edge2
 print("Etapa (1&2) & Etapa (2&3): ", len(edges_intersec))
 
-fname = "inter-kirc-stageiv-stageiii-10k.txt"
+fname = "inter-kirc-stageiii-stageiv-10k.txt"
 f2 = np.genfromtxt(dirnets + fname, delimiter=' ', dtype='unicode')
 edge2 = set([(x[0], x[1]) for x in f2])
 
