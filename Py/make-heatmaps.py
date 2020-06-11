@@ -66,12 +66,12 @@ fig.set_size_inches(8.53, 5.5)
 ax0 = sns.heatmap(df1, cmap='coolwarm', annot=True, robust=True, fmt="d", 
 	yticklabels=stages, cbar=False, ax=ax0)
 ax0.xaxis.set_ticks_position('top')
-ax0.set_title('intersecciones')
+ax0.set_title('intersections')
 ax1 = sns.heatmap(df2, cmap='coolwarm', annot=True, robust=True, fmt="d", 
 	yticklabels=stages, cbar=False, ax=ax1)
 ax1.xaxis.set_ticks_position('top')
-ax1.set_title('diferencias')
-fig.suptitle('Interacciones entre etapas de cancer de rinon',fontsize=12)
+ax1.set_title('diferences')
+fig.suptitle('Interections between stages of MI networks for ccRC',fontsize=12)
 plt.subplots_adjust(top=0.85)
 plt.savefig(outdir + "/interacciones-etapas.png",dpi=300)
 
