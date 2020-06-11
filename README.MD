@@ -57,7 +57,9 @@ This output contains volcano plot in html format.
 
 ## 04 - Networks Analysis
 
-Script to generate intersections of stages and control.
+### Interseccions between all cohorts
+
+Script to generate intersection for each cohort:
 
 `$ python Py/intersections.py`
 
@@ -73,9 +75,11 @@ Plots are saved on:
 
 `$ ls Plots`
 
-To generate intersection between control and stages:
+### Interseccions between control and stages
 
-`$ python Py/make-heatmaps.py`
+To generate intersections:
+
+`$ python Py/ctrl-stages-intersec.py`
 
 Output are a network saved on:
 
@@ -85,8 +89,6 @@ and annotation for every MI interaction in:
 
 `$ ls Results/intersections/source-inter-ctrl-stages.tsv`
 `$ ls Results/intersections/target-inter-ctrl-stages.tsv`
-
-
 
 
 
