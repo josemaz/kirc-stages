@@ -10,6 +10,8 @@ from pathlib import Path
 
 dirnets = "Results/intersections/"
 stages = ["ctrl", "stagei", "stageii", "stageiii", "stageiv"]
+stagesnoms = ["Control", "Stage I", "Stage II", "Stage III", "Stage IV"]
+
 
 
 df1 = pd.DataFrame(columns = stages, index=stages)
@@ -33,7 +35,7 @@ for i in combinations(stages, 2):
 	# print(i)
 
 df1.fillna(0, inplace = True) 
-print(df1)
+
 # ax = sns.heatmap(df, cmap='coolwarm', annot=True, robust=True, fmt="d", 
 # 	yticklabels=stages, cbar=False)
 # ax.xaxis.set_ticks_position('top')
@@ -56,22 +58,34 @@ for i in combinations(stages, 2):
 	# print(i)
 
 df2.fillna(0, inplace = True) 
-print(df2)
 
 outdir="Plots"
 path = Path(outdir).mkdir(parents=True, exist_ok=True)
 
+df1.columns = stagesnoms
+df2.columns = stagesnoms
+
+print(df1)
+print(df2)
+
+
 fig, (ax0,ax1) = plt.subplots(1, 2, sharex=True, sharey=True)
+cbar_ax = fig.add_axes([.91, .3, .02, .4])
 fig.set_size_inches(8.53, 5.5)
-ax0 = sns.heatmap(df1, cmap='coolwarm', annot=True, robust=True, fmt="d", 
-	yticklabels=stages, cbar=False, ax=ax0)
+ax0 = sns.heatmap(df1, cmap='Greens', annot=True, robust=True, fmt="d", 
+	vmin=0, vmax=10000, yticklabels=False, cbar=False, ax=ax0)
 ax0.xaxis.set_ticks_position('top')
+ax0.set_yticklabels(stagesnoms, va="center")
 ax0.set_title('Intersections')
-ax1 = sns.heatmap(df2, cmap='coolwarm', annot=True, robust=True, fmt="d", 
-	yticklabels=stages, cbar=False, ax=ax1)
+
+ax1 = sns.heatmap(df2, cmap='Greens', annot=True, robust=True, fmt="d", 
+	vmin=0, vmax=10000, yticklabels=stagesnoms, 
+	cbar=True, ax=ax1, cbar_ax = cbar_ax)
 ax1.xaxis.set_ticks_position('top')
 ax1.set_title('Differences')
+
 # fig.suptitle('Interections between stages of MI networks for ccRC',fontsize=12)
+fig.tight_layout(rect=[0, 0, .9, 1])
 plt.subplots_adjust(top=0.85)
 plt.savefig(outdir + "/interacciones-etapas.png",dpi=300)
 
