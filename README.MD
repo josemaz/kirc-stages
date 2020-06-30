@@ -1,6 +1,6 @@
 # Introduction
 
-This repository contains code and supplementary materials for paper named "xxx". 
+This repository contains code and supplementary materials for paper: *Gene expression and co-expression networks are strongly altered through stages in clear cell renal carcinoma*. 
 
 Jose Maria Zamora-Fuentes, Jesus Espinal-Enriquez, Enrique Hernandez-Lemus
 
