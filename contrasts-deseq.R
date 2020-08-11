@@ -41,11 +41,14 @@ for (comb in 1:ncol(combs)){
   x[[comb]] <- gs
 }
 
+dir.create("Results/contrasts", recursive = TRUE)
 print("INTERSECCION TODOS LOS CONTRASTES")
 for (comb in 2:ncol(combs)){
   l<- Reduce(intersect,x[1:comb])
   print(paste0("Numero de contrastes: ", comb))
   print(length(l))
+  fname <- paste0("Results/contrasts/comb",comb,'.csv')
+  write.table(l,fname)
 }
 
 print("INTERSECCION CONTRASTES ENFERMOS")
