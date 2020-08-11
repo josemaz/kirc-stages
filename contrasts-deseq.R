@@ -34,7 +34,7 @@ for (comb in 1:ncol(combs)){
   print(paste0(combs[,comb][2],' - ',combs[,comb][1]))
   res <- results(dds, contrast=c("etapa", combs[,comb][2], combs[,comb][1]))
   rownames(res) <- genes
-  filtro <- res[(res$padj < 0.05) & (res$log2FoldChange < 1.0),]
+  filtro <- res[(res$padj < 0.05) & (res$log2FoldChange < -1.0),]
   # summary(res)
   print(nrow(filtro))
   gs <- rownames(filtro)
