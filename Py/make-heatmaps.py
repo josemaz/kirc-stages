@@ -9,18 +9,21 @@ import matplotlib.pyplot as plt
 from pathlib import Path
 
 dirnets = "Results/intersections/"
+dirnets = sys.argv[1]
+cut = dirnets.split('/')[-2]
+cutn = int(sys.argv[2])
 stages = ["ctrl", "stagei", "stageii", "stageiii", "stageiv"]
 stagesnoms = ["Control", "Stage I", "Stage II", "Stage III", "Stage IV"]
-
 
 
 df1 = pd.DataFrame(columns = stages, index=stages)
 for i in combinations(stages, 2):
 	# inter-kirc-stageii-stageiv-10k.txt
-	fname = "inter-kirc-" + i[0] + "-" + i[1] +"-10k.txt"
+	fname = "inter-kirc-" + i[0] + "-" + i[1] + "-" + cut + ".txt"
 	fname = dirnets + "/" + fname
-	fname_rev = "inter-kirc-" + i[1] + "-" + i[0] +"-10k.txt"
+	fname_rev = "inter-kirc-" + i[1] + "-" + i[0] + "-" + cut + ".txt"
 	fname_rev = dirnets + "/" + fname_rev
+	print(fname)
 	if path.exists(fname):
 		# print("File exist: ", fname)
 		f = fname
@@ -41,11 +44,12 @@ df1.fillna(0, inplace = True)
 # ax.xaxis.set_ticks_position('top')
 # plt.show()
 
+
 df2 = pd.DataFrame(columns = stages, index=stages)
 for i in combinations(stages, 2):
-	fname = "diff-kirc-" + i[0] + "-" + i[1] +"-10k.txt"
+	fname = "diff-kirc-" + i[0] + "-" + i[1] + "-" + cut + ".txt"
 	fname = dirnets + "/" + fname
-	fname_rev = "diff-kirc-" + i[1] + "-" + i[0] +"-10k.txt"
+	fname_rev = "diff-kirc-" + i[1] + "-" + i[0] + "-" + cut + ".txt"
 	fname_rev = dirnets + "/" + fname_rev
 	if not path.exists(fname):
 		print("ERROR in tuple: ", i)
@@ -58,6 +62,7 @@ for i in combinations(stages, 2):
 	# print(i)
 
 df2.fillna(0, inplace = True) 
+
 
 outdir="Plots"
 path = Path(outdir).mkdir(parents=True, exist_ok=True)
@@ -73,21 +78,21 @@ fig, (ax0,ax1) = plt.subplots(1, 2, sharex=True, sharey=True)
 cbar_ax = fig.add_axes([.91, .3, .02, .4])
 fig.set_size_inches(8.53, 5.5)
 ax0 = sns.heatmap(df1, cmap='Greens', annot=True, robust=True, fmt="d", 
-	vmin=0, vmax=10000, yticklabels=False, cbar=False, ax=ax0)
+	vmin=0, vmax=cutn, yticklabels=False, cbar=False, ax=ax0)
 ax0.xaxis.set_ticks_position('top')
 ax0.set_yticklabels(stagesnoms, va="center")
-ax0.set_title('Intersections')
+ax0.set_title('Intersections cut=' + cut)
 
 ax1 = sns.heatmap(df2, cmap='Greens', annot=True, robust=True, fmt="d", 
-	vmin=0, vmax=10000, yticklabels=stagesnoms, 
+	vmin=0, vmax=cutn, yticklabels=stagesnoms, 
 	cbar=True, ax=ax1, cbar_ax = cbar_ax)
 ax1.xaxis.set_ticks_position('top')
-ax1.set_title('Differences')
+ax1.set_title('Differences cut=' + cut)
 
 # fig.suptitle('Interections between stages of MI networks for ccRC',fontsize=12)
 fig.tight_layout(rect=[0, 0, .9, 1])
 plt.subplots_adjust(top=0.85)
-plt.savefig(outdir + "/interacciones-etapas.png",dpi=300)
+plt.savefig(outdir + "/heat-interacciones-" + cut + ".png",dpi=300)
 
 
 
