@@ -1,22 +1,29 @@
 #!/bin/bash
 
+. "`dirname \"$0\"`"/bash_colors.sh
 
 d="/datos/ot/biodata/stages/kirc/mi"
 grps=("ctrl" "stagei" "stageii" "stageiii" "stageiv")
 cutsdir="Results/cuts-mi"
 
+
 for i in $(seq 2 6)
 do
 	n=$(( 10 ** i ))
-	nstr=$(numfmt --format="%.f" --to=si ${n})
-	echo "Making cuts for $nstr"
+	nstr=$(numfmt --format="%.f" --to=si ${n}) # Ex. 1K,10K, 1M
+	clr_bold clr_green "Making cuts for $nstr"
 	dout="${cutsdir}/${nstr}"
 	mkdir -p $dout
 	for g in ${grps[@]}; do
   		head -n ${n} ${d}/kirc-${g}.sort > $dout/kirc-${g}-${nstr}.txt
 	done
-	echo "Making Intersections files"
+	clr_bold clr_green"Making Intersections files"
 	python Py/intersections.py ${dout} ${dout}/intersections
-	echo "Making Heatmaps"
+	clr_bold clr_green "Making Heatmaps"
 	python Py/make-heatmaps.py ${dout}/intersections $n
+	clr_bold clr_green "Making Venn Diagrams"
+	Rscript R/make-venn-intersec.R $nstr
+	clr_bold clr_green "Making Enrichment"
+	python Py/component-GO.py Results/cuts-mi/$nstr/inter-all-groups-$nstr.tsv
+	python Py/component-GO.py Results/cuts-mi/$nstr/inter-only-stages-$nstr.tsv
 done
