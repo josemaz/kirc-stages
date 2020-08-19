@@ -45,6 +45,7 @@ for (comb in 1:ncol(combs)){
   x.names[[comb]] <- cname
 }
 
+
 dir.create("Results/contrasts", recursive = TRUE)
 cat(red$bold("ALL-Contrast Intersection\n"))
 s <- paste0(x.names[[1]])
@@ -62,6 +63,7 @@ for (comb in 2:ncol(combs)){
   write.table(l,fname)
 }
 cat(green("Gene with more intersections: "), black$bgWhite$bold(bestgene),"\n"))
+
 
 # print("INTERSECCION CONTRASTES ENFERMOS")
 # for (comb in 6:ncol(combs)){
@@ -81,8 +83,8 @@ for (comb in 6:ncol(combs)){
   if(length(l) == 1){
     bestgene <- l[1]
   }
-  fname <- paste0("Results/contrasts/comb",comb,'.csv')
-  write.table(l,fname)
+  # fname <- paste0("Results/contrasts/comb",comb,'.csv')
+  # write.table(l,fname)
 }
 cat(green("Gene with more intersections: ", black$bgWhite$bold(bestgene),"\n"))
 
