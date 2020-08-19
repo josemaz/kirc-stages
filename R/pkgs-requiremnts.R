@@ -8,6 +8,7 @@ dir.create(rutalib, showWarnings = TRUE, recursive = TRUE)
 
 
 install.packages("openssl")
+
 if (!requireNamespace("devtools", quietly = TRUE))
     install.packages("devtools")
 if (!requireNamespace("BiocManager", quietly = TRUE))
@@ -46,4 +47,4 @@ devtools::install_github('BioinformaticsFMRP/TCGAbiolinks')
 #! sudo apt-get install r-base-core
 
 install.packages("VennDiagram")
-
+install.packages("crayon")

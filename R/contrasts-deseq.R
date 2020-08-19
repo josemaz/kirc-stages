@@ -1,5 +1,6 @@
 library(DESeq2)
 library(SummarizedExperiment)
+library(crayon)
 
 etapas <- c('ctrl', 'stagei', 'stageii','stageiii','stageiv')
 
@@ -29,34 +30,59 @@ dds <- DESeq(dds, test="LRT", reduced=~1) #ANODEV
 resultsNames(dds)
 
 x <- list()
+x.names <- list()
 combs <- combn(etapas,2) #combinaciones de etapas
 for (comb in 1:ncol(combs)){
-  print(paste0(combs[,comb][2],' - ',combs[,comb][1]))
+  cname <- paste0(combs[,comb][2],' - ',combs[,comb][1])
+  print(paste0("Contrast: ",cname))
   res <- results(dds, contrast=c("etapa", combs[,comb][2], combs[,comb][1]))
   rownames(res) <- genes
   filtro <- res[(res$padj < 0.05) & (res$log2FoldChange < -1.0),]
   # summary(res)
-  print(nrow(filtro))
+  print(paste0("Underexpressed genes: ", nrow(filtro)))
   gs <- rownames(filtro)
   x[[comb]] <- gs
+  x.names[[comb]] <- cname
 }
 
 dir.create("Results/contrasts", recursive = TRUE)
-print("INTERSECCION TODOS LOS CONTRASTES")
+cat(red("ALL-Contrast Intersection\n"))
+s <- paste0(x.names[[1]])
 for (comb in 2:ncol(combs)){
+  # print(paste0("Adding contrast: ", comb))
+  s <- paste0(s, " , ", x.names[[comb]])
+  cat(green("Set of contrasts intersected:\n"))
+  print(s)
   l<- Reduce(intersect,x[1:comb])
-  print(paste0("Numero de contrastes: ", comb))
-  print(length(l))
+  print(paste0("Genes of intersection: ", length(l)))
+  if(length(l) == 1){
+    bestgene <- l[1]
+  }
   fname <- paste0("Results/contrasts/comb",comb,'.csv')
   write.table(l,fname)
 }
+cat(green("Gene with most intersections: ", bestgene,"\n"))
 
-print("INTERSECCION CONTRASTES ENFERMOS")
-for (comb in 6:ncol(combs)){
-  l<- Reduce(intersect,x[5:comb])
-  print(paste0("Numero de contrastes: 5:", comb))
-  print(length(l))
-}
+# print("INTERSECCION CONTRASTES ENFERMOS")
+# for (comb in 6:ncol(combs)){
+#   l<- Reduce(intersect,x[5:comb])
+#   print(paste0("Numero de contrastes: 5:", comb))
+#   print(length(l))
+# }
+
+
+
+
+
+
+
+####################################
+#### END
+####################################
+
+
+
+
 
 
 
