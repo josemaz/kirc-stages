@@ -128,7 +128,12 @@ and annotation enrichement by component is saved:
 `$ ls Results/intersections/inter-ctrl-stages-enrich.tsv`
 
 
-### DEG Contrast analysis
+
+## 05 - DEG Contrast analysis
+
+To get genes (PLG and SLC) underexpressed in all DEG contrast:
+
+Rscript  R/contrasts-deseq.R
 
 
 
