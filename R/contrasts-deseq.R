@@ -37,7 +37,7 @@ for (comb in 1:ncol(combs)){
   print(paste0("Contrast: ",cname))
   res <- results(dds, contrast=c("etapa", combs[,comb][2], combs[,comb][1]))
   rownames(res) <- genes
-  filtro <- res[(res$padj < 0.05) & (res$log2FoldChange < -1.0),]
+  filtro <- res[(res$padj < 0.05) & (res$log2FoldChange < -0.5),]
   # summary(res)
   print(paste0("Underexpressed genes: ", nrow(filtro)))
   gs <- rownames(filtro)
@@ -46,23 +46,25 @@ for (comb in 1:ncol(combs)){
 }
 
 
-dir.create("Results/contrasts", recursive = TRUE)
+# dir.create("Results/contrasts", recursive = TRUE)
 cat(red$bold("ALL-Contrast Intersection\n"))
 s <- paste0(x.names[[1]])
 for (comb in 2:ncol(combs)){
   # print(paste0("Adding contrast: ", comb))
   s <- paste0(s, " , ", x.names[[comb]])
-  cat(green("Set of contrasts intersected:\n"))
+  cat(green("Set of contrasts intersected (", comb, ") :\n" ))
   print(s)
   l<- Reduce(intersect,x[1:comb])
   print(paste0("Genes of intersection: ", length(l)))
-  if(length(l) == 1){
-    bestgene <- l[1]
+  if(length(l) == 2){
+    bestgene <- l
   }
-  fname <- paste0("Results/contrasts/comb",comb,'.csv')
-  write.table(l,fname)
+  # fname <- paste0("Results/contrasts/comb",comb,'.csv')
+  # write.table(l,fname)
 }
-cat(green("Gene with more intersections: "), black$bgWhite$bold(bestgene),"\n"))
+cat(green("Gene with more intersections: \n"))
+cat(black$bgWhite$bold(bestgene[1]),",",black$bgWhite$bold(bestgene[2]),"\n")
+
 
 
 # print("INTERSECCION CONTRASTES ENFERMOS")
@@ -74,19 +76,17 @@ cat(green("Gene with more intersections: "), black$bgWhite$bold(bestgene),"\n"))
 cat(red$bold("Only-ccRC-Contrast Intersection\n"))
 s <- paste0(x.names[[5]])
 for (comb in 6:ncol(combs)){
-  # print(paste0("Adding contrast: ", comb))
   s <- paste0(s, " , ", x.names[[comb]])
-  cat(green("Set of contrasts intersected:\n"))
+  cat(green("Set of contrasts intersected (", comb, ") :\n" ))
   print(s)
   l<- Reduce(intersect,x[1:comb])
   print(paste0("Genes of intersection: ", length(l)))
-  if(length(l) == 1){
-    bestgene <- l[1]
+  if(length(l) == 2){
+    bestgene <- l
   }
-  # fname <- paste0("Results/contrasts/comb",comb,'.csv')
-  # write.table(l,fname)
 }
-cat(green("Gene with more intersections: ", black$bgWhite$bold(bestgene),"\n"))
+cat(green("Gene with more intersections: \n"))
+cat(black$bgWhite$bold(bestgene[1]),",",black$bgWhite$bold(bestgene[2]),"\n")
 
 
 
