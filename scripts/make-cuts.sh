@@ -20,7 +20,7 @@ do
 			&& echo "dosen't exist: ${d}/kirc-${g}.sort" && exit 15
   		head -n ${n} ${d}/kirc-${g}.sort > $dout/kirc-${g}-${nstr}.txt
 	done
-	clr_bold clr_green"Making Intersections files"
+	clr_bold clr_green "Making Intersections files"
 	python Py/intersections.py ${dout} ${dout}/intersections
 	clr_bold clr_green "Making Heatmaps"
 	python Py/make-heatmaps.py ${dout}/intersections $n
