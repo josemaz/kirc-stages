@@ -2,8 +2,8 @@
 
 . "`dirname \"$0\"`"/bash_colors.sh
 
-# d="/datos/ot/biodata/stages/kirc/mi"
-d="Results/MI"
+d="/datos/ot/biodata/stages/kirc/mi"
+# d="Results/MI"
 grps=("ctrl" "stagei" "stageii" "stageiii" "stageiv")
 cutsdir="Results/cuts-mi"
 
@@ -30,3 +30,4 @@ do
 	python Py/component-GO.py Results/cuts-mi/$nstr/inter-all-groups-$nstr.tsv
 	python Py/component-GO.py Results/cuts-mi/$nstr/inter-only-stages-$nstr.tsv
 done
+rm -rf Plots/*.log

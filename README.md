@@ -33,7 +33,7 @@ Python Pre-requisites (optional):
 
 
 
-## 01 - Data Adquisition, Control Quality and Normalization
+## 01 - Data Aquisition, Quality Control  and Normalization
 
 These three phases of the process are performed by next R script:
 
@@ -77,55 +77,48 @@ This output contains volcano plot in html format.
 
 
 
-## 04 - Networks Analysis
+## 04 - Networks Analysis by MI cut off interaction
 
-### Intersections between all cohorts
+We realized a network analysis and biological process cutting MI interactions in 100, 1K, 10K, 100K, 1M.
 
-Script to generate intersection for each cohort:
+Pipeline to this analysis is done by:
 
-`$ python Py/intersections.py`
+`$ bash scripts/make-cuts.sh`
 
-Intersections are saved on:
+Steps are executed in the following order:
 
-`$ ls Results/intersections`
+1. Intersections and diferences networks are saved on:
 
-To generate heatmaps intersection plots:
+`$ ls Results/cuts-mi/100/intersections/*`
 
-`$ python Py/make-heatmaps.py`
+i.e., for cut off of 100 interactions in MI.
 
-Plots are saved on:
+2. Heatmaps of intersections and diferences are saved on:
 
-`$ ls Plots`
+`$ ls Plot/heat-interacciones-100.png`
 
-### Intersections only between control and stages
+i.e., for cut off of 100 interactions in MI.
 
-To generate intersections:
+3. Venn diagrams of interactions between experimental groups are saved on:
 
-`$ python Py/ctrl-stages-intersec.py`
+`$ ls Plot/venn-100.png`
 
-Output are a network saved on:
+i.e., for cut off of 100 interactions in MI.
 
-`$ ls Results/intersections/inter-ctrl-stages.tsv`
+4. Calculation of enrichment for all groups are saved on:
 
-and annotation for every MI interaction in:
+`$ Results/cuts-mi/100/inter-all-groups-100.go.txt`
 
-`$ ls Results/intersections/source-inter-ctrl-stages.tsv`
+where last column is the component id asociated to its rows of genes enrichment.
 
-`$ ls Results/intersections/target-inter-ctrl-stages.tsv`
+And the file with genes asociated to its component is saved on:
 
-### Network Enrichment
+`$ Results/cuts-mi/100/inter-all-groups-100.comp.txt`
 
-To get enrichment by component:
+5. The same notation was used to enrichment of only stages. We have those files saved on:
 
-`$ python Py/component-GO.py`
-
-Output gene-idcomponent:
-
-`$ ls Results/intersections/inter-ctrl-stages-components.tsv`
-
-and annotation enrichement by component is saved:
-
-`$ ls Results/intersections/inter-ctrl-stages-enrich.tsv`
+`$ Results/cuts-mi/100/inter-only-stages-100.go.txt`
+`$ Results/cuts-mi/100/inter-only-stages-100.comp.txt`
 
 
 
@@ -133,7 +126,7 @@ and annotation enrichement by component is saved:
 
 To get genes (PLG and SLC) underexpressed in all DEG contrast:
 
-Rscript  R/contrasts-deseq.R
+`$ Rscript  R/contrasts-deseq.R`
 
 
 
