@@ -66,6 +66,8 @@ plot.gene <- function(data, gname, xd){
     theme(axis.title.x = element_blank(),
           axis.title.y = element_blank(), 
           text = element_text(size=25)) 
+  # Salvar plot en una imagen
+  # ggsave('~/saved_image.png', width = 16, height = 9, dpi = 100)
   return(p)
 }
 
@@ -74,7 +76,7 @@ dd1 <- get.expr.by.gene("SLC6A19",Annot)
 dd2 <- get.expr.by.gene("PLG",Annot)
 
 p1 <- plot.gene(dd1,"SLC6A19",0.76)
-p1
+p1 
 p2 <- plot.gene(dd2,"PLG",0.87)
 p2
 

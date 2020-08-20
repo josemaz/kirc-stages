@@ -129,6 +129,11 @@ To get genes (PLG and SLC) underexpressed in all DEG contrast:
 `$ Rscript  R/contrasts-deseq.R`
 
 
+## 06 - Plot Genes Under and Over expressed
+
+In Rstudio you can use 
+
+`$ Rscript  R/gene-boxplot.R`
 
 
 

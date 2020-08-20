@@ -7,8 +7,8 @@ from gprofiler import GProfiler
 # outDir = "Results/intersections/"
 # fname = "Results/intersections/inter-ctrl-stages.tsv"
 fname = sys.argv[1]
-oname1 = fname.split('.')[0] + ".go.txt"
-oname2 = fname.split('.')[0] + ".comp.txt"
+oname1 = fname.split('.')[0] + "-components.go.txt"
+oname2 = fname.split('.')[0] + "-components.ids.txt"
 print(oname1)
 print(oname2)
 
@@ -22,7 +22,7 @@ g = ig.Graph.TupleList(df.itertuples(index=False),
 
 components = g.components()
 # print(components)
-print("Numero de componentes:", len(components))
+print("Number of Components:", len(components))
 
 df = pd.DataFrame({'gene':g.vs['name'],'components':components.membership })
 # Order by size of component
