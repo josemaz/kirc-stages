@@ -78,7 +78,7 @@ fig, (ax0,ax1) = plt.subplots(1, 2, sharex=True, sharey=True)
 cbar_ax = fig.add_axes([.91, .3, .02, .4])
 fig.set_size_inches(8.53, 5.5)
 ax0 = sns.heatmap(df1, cmap='Greens', annot=True, robust=True, fmt="d", 
-	vmin=0, vmax=cutn, yticklabels=False, cbar=False, ax=ax0)
+	vmin=0, vmax=cutn, cbar=False, ax=ax0)
 ax0.xaxis.set_ticks_position('top')
 ax0.set_yticklabels(stagesnoms, va="center")
 ax0.set_title('Intersections cut=' + cut)
