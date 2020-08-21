@@ -135,5 +135,11 @@ In Rstudio you can use
 
 `$ Rscript  R/gene-boxplot.R`
 
+## 07 - Enrichment by communities
+
+We only enriched 1M networks with:
+
+python Py/community-GO.py Results/cuts-mi/1M/inter-all-groups-1M.tsv
+
 
 
